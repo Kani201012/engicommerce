@@ -5,7 +5,7 @@ import json
 from datetime import datetime
 
 # --- 1. APP CONFIGURATION ---
-st.set_page_config(page_title="Kaydiem Titan v11.4 | Final Master Architect", layout="wide", page_icon="💎")
+st.set_page_config(page_title="Kaydiem Titan v11.5 | Platinum Architect", layout="wide", page_icon="💎")
 
 st.markdown("""
     <style>
@@ -24,12 +24,12 @@ st.markdown("""
 # --- SIDEBAR: DESIGN STUDIO ---
 with st.sidebar:
     st.image("https://www.gstatic.com/images/branding/product/2x/business_profile_96dp.png", width=50)
-    st.title("Titan v11.4 Studio")
+    st.title("Titan v11.5 Studio")
     
-    with st.expander("🎭 1. Layout & Architecture", expanded=True):
+    with st.expander("🎭 1. Layout & DNA", expanded=True):
         layout_dna = st.selectbox("Design DNA", ["Industrial Titan", "Classic Royal", "Soft-UI", "Glass-Tech", "Brutalist", "Corporate Elite"])
-        p_color = st.color_picker("Primary Brand Color (Maroon)", "#4A0E0E")
-        s_color = st.color_picker("Accent/CTA Color (Gold)", "#D4AF37")
+        p_color = st.color_picker("Primary Brand Color", "#4A0E0E")
+        s_color = st.color_picker("Accent/CTA Color", "#D4AF37")
         border_rad = st.select_slider("Corner Roundness", options=["0px", "4px", "12px", "24px", "40px", "60px"], value="40px")
 
     with st.expander("✍️ 2. Typography Studio", expanded=True):
@@ -39,9 +39,9 @@ with st.sidebar:
         ls = st.select_slider("Letter Spacing", options=["-0.05em", "-0.02em", "0em", "0.05em", "0.1em"], value="0.05em")
 
     gsc_tag = st.text_input("GSC Verification Tag")
-    st.info("Technical Authority: Kaydiem Script Lab")
+    st.info("Built by Kaydiem Script Lab")
 
-st.title("🏗️ Kaydiem Titan Supreme v11.4")
+st.title("🏗️ Kaydiem Titan Supreme v11.5")
 
 # --- 2. MULTI-TAB DATA COLLECTION ---
 tabs = st.tabs(["📍 Identity", "🏗️ Content & SEO", "🖼️ Photo Manager", "⚡ Live E-com", "🌟 Social Proof", "⚖️ Legal"])
@@ -50,33 +50,32 @@ with tabs[0]:
     c1, c2 = st.columns(2)
     with c1:
         biz_name = st.text_input("Business Name (NAP)", "Red Hippo (The Planners)")
-        biz_phone = st.text_input("Verified Phone Number", "+91 84540 02711")
-        biz_email = st.text_input("Business Email Address", "events@redhippoplanners.in")
+        biz_phone = st.text_input("Verified Phone", "+91 84540 02711")
+        biz_email = st.text_input("Business Email", "events@redhippoplanners.in")
     with c2:
-        biz_cat = st.text_input("Business Category", "Luxury Wedding Planner")
-        biz_hours = st.text_input("Opening Hours", "Mon-Sun: 10:00 - 19:00")
-        prod_url = st.text_input("Production URL (Trailing /)", "https://kani201012.github.io/site/")
-    biz_logo = st.text_input("Business Logo URL")
+        biz_cat = st.text_input("Category", "Luxury Wedding Planner")
+        biz_hours = st.text_input("Hours", "Mon-Sun: 10:00 - 19:00")
+        prod_url = st.text_input("Production URL", "https://kani201012.github.io/site/")
+    biz_logo = st.text_input("Logo Image URL")
     biz_addr = st.text_area("Full Maps Physical Address")
     biz_areas = st.text_area("Service Areas (Comma separated)", "Vasant Kunj, Chhatarpur, South Delhi")
-    map_iframe = st.text_area("Map Embed HTML Code (<iframe>)")
+    map_iframe = st.text_area("Map Embed HTML Code")
 
 with tabs[1]:
-    hero_h = st.text_input("Main Hero Headline", "Crafting Dream Weddings: New Delhi's Premier Luxury Decorators")
-    seo_d = st.text_input("Meta Description (160 Chars)", "Verified 2026 AI-Ready Industrial Assets.")
-    biz_key = st.text_input("SEO Keywords (Comma Separated)")
+    hero_h = st.text_input("Hero Headline", "Crafting Dream Weddings: New Delhi's Premier Luxury Decorators")
+    seo_d = st.text_input("Meta Description (160 Chars)")
+    biz_key = st.text_input("SEO Keywords")
     biz_serv = st.text_area("Services Listing (One per line)")
     about_txt = st.text_area("Our Story (800+ Words for E-E-A-T)", height=250)
 
 with tabs[2]:
-    st.header("📸 Premium Asset Manager")
-    custom_hero = st.text_input("Hero Background Image URL")
+    st.header("📸 Premium Photo Manager")
+    custom_hero = st.text_input("Hero Background URL")
     custom_feat = st.text_input("Feature Image URL")
-    custom_gall = st.text_input("About Page Image URL")
+    custom_gall = st.text_input("Gallery Image URL")
 
 with tabs[3]:
-    st.header("🛒 Live Inventory Feed (Google Sheets)")
-    st.warning("GUIDE: Use Pipe (|) separator. Format: Name | Price | Description | Img1 | Img2 | Img3")
+    st.header("⚡ Live E-commerce Data")
     sheet_url = st.text_input("Published CSV Link")
 
 with tabs[4]:
@@ -84,27 +83,29 @@ with tabs[4]:
     faq_txt = st.text_area("FAQ (Question? ? Answer)")
 
 with tabs[5]:
-    st.header("⚖️ Legal Compliance Hub")
+    st.header("⚖️ Legal Hub")
     priv_body = st.text_area("Privacy Policy Content", height=300)
-    terms_body = st.text_area("Terms & Conditions Content", height=300)
+    terms_body = st.text_area("Terms Content", height=300)
 
-# --- 3. THE SUPREME ENGINE V11.4 ---
+# --- 3. THE SUPREME ENGINE V11.5 ---
 
 if st.button("🚀 DEPLOY FLAWLESS PLATINUM ASSET"):
     
-    # 3.1 Setup Image Variables
+    # Setup Image logic
     img_h = custom_hero if custom_hero else "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1600"
     img_f = custom_feat if custom_feat else "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800"
     img_g = custom_gall if custom_gall else "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&q=80&w=1600"
 
-    # 3.2 Global Logic Variables
-    logo_display = f'<img src="{biz_logo}" alt="{biz_name}" class="h-10 md:h-16 w-auto object-contain">' if biz_logo else f'<span class="text-xl md:text-3xl font-black tracking-tighter uppercase" style="color:var(--p)">{biz_name}</span>'
-    a_list = [a.strip() for a in biz_areas.split(",")]
-    s_areas_json = json.dumps(a_list)
+    # Logo HTML
+    logo_html = f'<img src="{biz_logo}" alt="{biz_name}" class="h-10 md:h-16 w-auto object-contain">' if biz_logo else f'<span class="text-xl md:text-3xl font-black tracking-tighter uppercase" style="color:var(--p)">{biz_name}</span>'
+    
+    # WA Logic
     wa_clean = biz_phone.replace(" ", "").replace("+", "")
     wa_base_url = f"https://wa.me/{wa_clean}?text="
+    
+    a_list = [a.strip() for a in biz_areas.split(",")]
+    s_areas_json = json.dumps(a_list)
 
-    # 3.3 The CSS Theme
     theme_css = f"""
     :root {{ --p: {p_color}; --s: {s_color}; --radius: {border_rad}; }}
     * {{ box-sizing: border-box; }}
@@ -115,13 +116,15 @@ if st.button("🚀 DEPLOY FLAWLESS PLATINUM ASSET"):
     .hero-title {{ font-size: clamp(1.6rem, 8vw, 95px); text-shadow: 0 4px 20px rgba(0,0,0,0.4); line-height: 1; }}
     .section-title {{ font-size: clamp(1.8rem, 6vw, 75px); color: var(--p); }}
     
-    .btn-supreme {{ background: var(--p); color: white; padding: 1.1rem 2.8rem; border-radius: var(--radius); font-weight: 900; transition: all 0.4s; display: inline-block; text-align: center; border:none; text-decoration:none; }}
-    .btn-accent {{ background: var(--s); color: white !important; padding: 1rem 2.5rem; border-radius: var(--radius); font-weight: 900; transition: all 0.4s; display: inline-block; text-align: center; border:none; box-shadow: 0 10px 20px -5px var(--s); text-decoration:none; cursor: pointer; }}
+    /* RECTIFIED PROFESSIONAL BUTTONS */
+    .btn-p {{ background: var(--p); color: white !important; padding: 0.8rem 2rem; border-radius: var(--radius); font-weight: 900; transition: all 0.4s; display: inline-block; text-align: center; border:none; text-decoration:none; text-transform: uppercase; font-size: 12px; letter-spacing: 0.1em; }}
+    .btn-p:hover {{ transform: translateY(-2px); filter: brightness(1.2); }}
+
+    .btn-accent {{ background: var(--s); color: white !important; padding: 1.1rem 2.8rem; border-radius: var(--radius); font-weight: 900; transition: all 0.4s; display: inline-block; text-align: center; border:none; box-shadow: 0 10px 20px -5px var(--s); text-decoration:none; cursor: pointer; text-transform: uppercase; letter-spacing: 0.1em; }}
     .btn-accent:hover {{ transform: translateY(-3px); filter: brightness(1.1); box-shadow: 0 20px 40px -5px var(--s); }}
     
     .glass-nav {{ background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.05); width: 100%; z-index: 9999; position: fixed; top: 0; left: 0; }}
     
-    /* RECTIFIED HERO - NO OVERLAP */
     .hero-mask {{ 
         background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('{img_h}'); 
         background-size: cover; background-position: center; 
@@ -129,20 +132,22 @@ if st.button("🚀 DEPLOY FLAWLESS PLATINUM ASSET"):
         width: 100%; margin: 0; padding: 140px 20px 60px 20px;
     }}
     
-    .product-card {{ background: white; border-radius: var(--radius); padding: 2.5rem; border: 1px solid #f1f5f9; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer; }}
+    .product-card {{ background: white; border-radius: var(--radius); padding: 2rem; border: 1px solid #f1f5f9; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer; height: 100%; }}
     #modal {{ display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 100000; padding: 1rem; align-items: center; justify-content: center; overflow-y: auto; }}
     .modal-content {{ background: white; max-width: 1000px; width: 100%; border-radius: var(--radius); overflow: hidden; position: relative; }}
+    
     .legal-text {{ white-space: pre-wrap; word-wrap: break-word; font-size: 1.1rem; color: #334155; line-height: 1.9; padding: 20px 0; }}
     .legal-bold-title {{ font-weight: 900; font-size: clamp(2.2rem, 6vw, 4.5rem); color: var(--p); margin-bottom: 2rem; text-transform: uppercase; line-height: 1; }}
-    .wa-float {{ position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; z-index: 99999; box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: 0.3s ease; text-decoration:none; }}
+    .wa-float {{ position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; z-index: 99999; box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: 0.3s ease; text-decoration:none; animation: pulse 2s infinite; }}
+    @keyframes pulse {{ 0% {{ box-shadow: 0 0 0 0 rgba(37,211,102,0.7); }} 70% {{ box-shadow: 0 0 0 15px rgba(37,211,102,0); }} 100% {{ box-shadow: 0 0 0 0 rgba(37,211,102,0); }} }}
     """
 
-    def get_layout(page_title, page_desc, content_body, is_home=False):
-        v_tag = f'<meta name="google-site-verification" content="{gsc_tag}">' if (is_home and gsc_tag) else ""
+    def get_layout(page_title, page_desc, content_html, is_h=False):
+        v_tag = f'<meta name="google-site-verification" content="{gsc_tag}">' if (is_h and gsc_tag) else ""
         
-        # --- RECTIFIED DYNAMIC E-COM SCRIPT ---
+        # --- RECTIFIED DYNAMIC INJECTION SCRIPT ---
         dyn_script = ""
-        if is_home and sheet_url:
+        if is_h and sheet_url:
             dyn_script = f"""
             <script>
             let currentProducts = [];
@@ -151,25 +156,31 @@ if st.button("🚀 DEPLOY FLAWLESS PLATINUM ASSET"):
                     const response = await fetch('{sheet_url}');
                     const csv = await response.text();
                     if (csv.includes("<!DOCTYPE")) return;
+                    
                     const rows = csv.split('\\n').map(row => row.split('|')).slice(1);
                     const container = document.getElementById('live-data-container');
+                    if (!container) return;
                     container.innerHTML = "";
+                    
                     rows.forEach((parts, idx) => {{
                         if (parts.length >= 2) {{
-                            const p = {{ id: idx, name: parts[0].trim(), price: parts[1].trim(), desc: (parts[2] || "").trim(), img1: (parts[3] || "{img_f}").trim(), img2: (parts[4] || "").trim(), img3: (parts[5] || "").trim() }};
+                            const p = {{ 
+                                id: idx, name: parts[0].trim(), price: parts[1].trim(), desc: (parts[2] || "").trim(), 
+                                img1: (parts[3] || "{img_f}").trim(), img2: (parts[4] || "").trim(), img3: (parts[5] || "").trim() 
+                            }};
                             currentProducts.push(p);
                             container.innerHTML += `
                             <div onclick="openProduct(${{idx}})" class="product-card flex flex-col justify-between transition-all hover:scale-[1.03]">
-                                <img src="${{p.img1}}" class="w-full h-48 object-cover mb-6 rounded-[2rem] bg-slate-50" onerror="this.src='{img_f}'">
+                                <img src="${{p.img1}}" class="w-full h-56 object-cover mb-6 rounded-[2.5rem] bg-slate-50" onerror="this.src='{img_f}'">
                                 <div>
-                                    <h3 class="text-xl font-black mb-2 uppercase" style="color:var(--p)">${{p.name}}</h3>
-                                    <p class="font-black text-2xl mb-4" style="color:var(--s)">${{p.price}}</p>
-                                    <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest italic underline underline-offset-4">Learn More →</p>
+                                    <h3 class="text-2xl font-black mb-2 uppercase" style="color:var(--p)">${{p.name}}</h3>
+                                    <p class="font-black text-2xl mb-4 text-s" style="color:var(--s)">${{p.price}}</p>
+                                    <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest italic underline decoration-slate-100 underline-offset-4">Click to Open →</p>
                                 </div>
                             </div>`;
                         }}
                     }});
-                }} catch (e) {{ console.log("Fail"); }}
+                }} catch (e) {{ console.log("E-com Fail"); }}
             }}
             function openProduct(id) {{
                 const p = currentProducts[id];
@@ -177,7 +188,9 @@ if st.button("🚀 DEPLOY FLAWLESS PLATINUM ASSET"):
                 document.getElementById('m-price').innerText = p.price;
                 document.getElementById('m-desc').innerText = p.desc;
                 document.getElementById('m-img-1').src = p.img1;
-                document.getElementById('m-wa').href = "https://wa.me/{wa_clean}?text=" + encodeURIComponent("Interest in " + p.name + " (" + p.price + ")");
+                document.getElementById('m-img-2').src = p.img2 || p.img1;
+                document.getElementById('m-img-3').src = p.img3 || p.img1;
+                document.getElementById('m-wa').href = "{wa_base_url}" + encodeURIComponent("I am interested in " + p.name + " (" + p.price + ")");
                 document.getElementById('modal').style.display = 'flex';
                 document.body.style.overflow = 'hidden';
             }}
@@ -197,32 +210,35 @@ if st.button("🚀 DEPLOY FLAWLESS PLATINUM ASSET"):
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family={h_font.replace(' ', '+')}:wght@700;900&family={b_font.replace(' ', '+')}:wght@400;700&display=swap" rel="stylesheet">
     <style>{theme_css}</style>
-    <script type="application/ld+json">
-    {{ "@context": "https://schema.org", "@type": "LocalBusiness", "name": "{biz_name}", "address": {{ "@type": "PostalAddress", "streetAddress": "{biz_addr}" }}, "telephone": "{biz_phone}", "areaServed": {s_areas_json} }}
-    </script>
 </head>
-<body class="bg-white flex flex-col min-h-screen text-slate-900">
+<body class="bg-white">
     <nav class="glass-nav p-4 md:p-6 shadow-sm">
-        <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <a href="index.html" class="no-underline">{logo_display}</a>
+        <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <a href="index.html" class="no-underline">{logo_html}</a>
             <div class="flex items-center space-x-6 md:space-x-12 text-[10px] md:text-xs font-black uppercase tracking-widest text-slate-600">
                 <a href="index.html" class="hover:text-blue-600 no-underline">Home</a> <a href="about.html" class="hover:text-blue-600 no-underline">About</a> <a href="contact.html" class="hover:text-blue-600 no-underline">Contact</a>
                 <a href="tel:{biz_phone}" class="btn-accent" style="padding: 0.5rem 1.5rem; font-size: 10px;">CALL NOW</a>
             </div>
         </div>
     </nav>
-    <main class="flex-grow pt-24 md:pt-0">{content_body}</main>
+    <main class="flex-grow pt-24 md:pt-0">{content_html}</main>
     
-    <div id="modal" onclick="if(event.target == this) {{ this.style.display='none'; document.body.style.overflow='auto'; }}">
+    <div id="modal" onclick="if(event.target == this) closeModal()">
         <div class="modal-content shadow-2xl animate-in zoom-in duration-300">
             <div class="grid md:grid-cols-2">
-                <div class="p-6 bg-slate-50"><img id="m-img-1" class="w-full h-80 object-cover rounded-[2.5rem] shadow-xl"></div>
+                <div class="p-6 bg-slate-50 flex flex-col gap-4">
+                    <img id="m-img-1" class="w-full h-80 object-cover rounded-[2.5rem] shadow-xl">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img id="m-img-2" class="w-full h-32 object-cover rounded-2xl" onerror="this.style.display='none'">
+                        <img id="m-img-3" class="w-full h-32 object-cover rounded-2xl" onerror="this.style.display='none'">
+                    </div>
+                </div>
                 <div class="p-12 flex flex-col justify-center text-left">
                     <h2 id="m-title" class="text-4xl font-black mb-4 uppercase text-p" style="color:var(--p)"></h2>
                     <p id="m-price" class="text-3xl font-black mb-8 text-s" style="color:var(--s)"></p>
                     <p id="m-desc" class="text-slate-600 mb-10 leading-relaxed text-lg"></p>
-                    <a id="m-wa" href="#" target="_blank" class="btn-accent w-full uppercase tracking-widest shadow-2xl">Confirm Now</a>
-                    <button onclick="document.getElementById('modal').style.display='none'; document.body.style.overflow='auto';" class="text-xs font-black uppercase tracking-widest opacity-30 mt-8 underline no-underline">Close Window</button>
+                    <a id="m-wa" href="#" target="_blank" class="btn-accent w-full uppercase tracking-widest shadow-2xl">Confirm Booking</a>
+                    <button onclick="closeModal()" class="text-xs font-black uppercase tracking-widest opacity-30 mt-8 underline no-underline">Close Window</button>
                 </div>
             </div>
         </div>
@@ -248,14 +264,8 @@ if st.button("🚀 DEPLOY FLAWLESS PLATINUM ASSET"):
     {dyn_script}
 </body></html>"""
 
-    # --- CONTENT BUILDERS ---
-    serv_html = "".join([f'<div class="bg-slate-50 p-12 rounded-[2.5rem] border border-slate-100 shadow-xl hover:scale-[1.02] transition-transform"><h3 class="text-2xl font-black mb-4 uppercase" style="color:var(--p)">{s.strip()}</h3><p class="text-slate-500 text-sm leading-relaxed font-bold uppercase tracking-tight italic text-left">Verified technical solution for {biz_name}.</p></div>' for s in biz_serv.splitlines() if s.strip()])
-    t_cards = "".join([f'<div class="p-10 bg-slate-50 rounded-[3rem] border border-slate-100 italic text-xl shadow-inner mb-8" style="color:var(--p)">"{t.split("|")[1].strip()}"<br><span class="font-black not-italic text-sm block mt-6 uppercase tracking-widest text-brand" style="color:var(--p)">— {t.split("|")[0].strip()} <span class="text-emerald-500 font-black ml-2 text-xs">● Verified Partner</span></span></div>' for t in testi_txt.splitlines() if "|" in t])
-    f_cards = "".join([f'<details class="mb-6 bg-white p-6 rounded-2xl border border-slate-100 cursor-pointer shadow-sm"><summary class="font-black text-lg uppercase tracking-tight">{f.split("?")[0].strip()}?</summary><p class="mt-4 text-slate-600 leading-relaxed font-medium text-sm">{f.split("?")[1].strip()}</p></details>' for f in faq_txt.splitlines() if "?" in f])
-
-    d_section = f"""<section id="inventory" class="py-32 px-6 max-w-[1440px] mx-auto text-center border-b"><h2 class="section-title mb-20 uppercase tracking-tighter" style="color:var(--p)">Exclusive Packages</h2><div id="live-data-container" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 text-left"><p class="p-20 text-center text-slate-400 font-bold animate-pulse uppercase tracking-widest">Opening Data Hub...</p></div></section>""" if sheet_url else ""
-
-    idx_content = f"""
+    # --- ENHANCED INDEX CONTENT ---
+    idx_main = f"""
     <section class="hero-mask px-6 text-center text-white">
         <div class="max-w-[1200px] mx-auto">
             <h1 class="hero-title mb-10 uppercase tracking-tighter leading-none">{hero_h}</h1>
@@ -264,44 +274,37 @@ if st.button("🚀 DEPLOY FLAWLESS PLATINUM ASSET"):
         </div>
     </section>
     
-    <section class="bg-slate-900 text-white py-16 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 text-center uppercase tracking-widest text-[10px] font-black">
-            <div><p class="text-4xl font-black text-brand mb-2" style="color:var(--s)">15+</p><p>Years Authority</p></div>
-            <div><p class="text-4xl font-black text-brand mb-2" style="color:var(--s)">100%</p><p>Verified Identity</p></div>
-            <div><p class="text-4xl font-black text-brand mb-2" style="color:var(--s)">24/7</p><p>Direct Connect</p></div>
-            <div><p class="text-4xl font-black text-brand mb-2" style="color:var(--s)">99/100</p><p>Technical Score</p></div>
+    <section id="inventory" class="py-32 px-6 max-w-[1440px] mx-auto text-center border-b">
+        <h2 class="section-title mb-20 uppercase tracking-tighter" style="color:var(--p)">Exclusive Packages</h2>
+        <div id="live-data-container" class="grid grid-cols-1 md:grid-cols-4 gap-10 text-left">
+            <p class="p-20 text-center text-slate-400 font-bold animate-pulse uppercase tracking-widest">Opening Data Hub...</p>
         </div>
     </section>
 
-    <section class="max-w-[1440px] mx-auto py-24 px-6 text-center border-b">
-        <h2 class="section-title mb-20 uppercase tracking-tighter" style="color:var(--p)">Core Competencies</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-left">{serv_html}</div>
-    </section>
-    {d_section}
     <section class="bg-slate-50 py-32 px-6 border-y text-left">
         <div class="max-w-[1440px] mx-auto grid md:grid-cols-2 gap-24 items-center">
             <img src="{img_f}" class="shadow-2xl" style="border-radius: var(--radius)">
             <div>
                 <h2 class="text-5xl font-black mb-12 uppercase tracking-tighter leading-none" style="color:var(--p)">Verified Heritage</h2>
                 <p class="text-2xl text-slate-600 mb-12 leading-relaxed italic">"Supplying the engineering foundation for the 2026 city landscape. Precision execution, certified safety, and direct quality oversight."</p>
-                <a href="about.html" class="btn-p text-xs tracking-widest uppercase no-underline">Read Full Story</a>
+                <a href="about.html" class="btn-p no-underline">Read Full Story</a>
             </div>
         </div>
     </section>
-    <section class="py-32 px-6 max-w-7xl mx-auto text-center"><div class="grid md:grid-cols-2 gap-24 text-left"><div><h2 class="text-4xl font-black mb-16 uppercase tracking-tighter" style="color:var(--p)">Success Stories</h2>{t_cards}</div><div><h2 class="text-4xl font-black mb-16 uppercase tracking-tighter" style="color:var(--p)">Expert Insights</h2>{f_cards}</div></div></section>
+    <section class="py-32 px-6 max-w-7xl mx-auto text-center"><div class="grid md:grid-cols-2 gap-24 text-left"><div><h2 class="text-4xl font-black mb-16 uppercase tracking-tighter" style="color:var(--p)">Success</h2>{t_cards}</div><div><h2 class="text-4xl font-black mb-16 uppercase tracking-tighter" style="color:var(--p)">Insights</h2>{f_cards}</div></div></section>
     """
 
     # --- ZIP OUTPUT ---
     z_b = io.BytesIO()
     with zipfile.ZipFile(z_b, "a", zipfile.ZIP_DEFLATED, False) as z_f:
-        z_f.writestr("index.html", get_layout("Home", seo_d, idx_content, True))
+        z_f.writestr("index.html", get_layout("Home", seo_d, idx_main, True))
         z_f.writestr("about.html", get_layout("About", "History", f"<section class='max-w-7xl mx-auto py-32 px-6'><h1 class='legal-bold-title'>About Our Heritage</h1><div class='text-xl md:text-2xl leading-relaxed text-slate-700 legal-text'>{about_txt}</div><img src='{img_g}' class='mt-20 w-full h-[600px] object-cover shadow-2xl' style='border-radius: var(--radius)'></section>"))
-        z_f.writestr("contact.html", get_layout("Contact", "Location", f"<section class='max-w-[1440px] mx-auto py-32 px-6 text-center'><h1 class='legal-bold-title uppercase tracking-tighter'>Technical Hub</h1><div class='grid md:grid-cols-2 gap-16 text-left'><div class='bg-slate-950 p-12 md:p-24 text-white' style='border-radius: var(--radius)'><p class='text-4xl font-black mb-8 text-white'>{biz_phone}</p><p class='text-2xl mb-12 opacity-80'>{biz_addr}</p><a href='tel:{biz_phone}' class='btn-accent w-full no-underline uppercase tracking-widest font-black'>BOOK CONSULTATION</a></div><div class='rounded-[3rem] overflow-hidden border shadow-2xl bg-slate-100' style='min-height:300px'>{map_iframe}</div></div></section>"))
+        z_f.writestr("contact.html", get_layout("Contact", "Location", f"<section class='max-w-[1440px] mx-auto py-32 px-6 text-center'><h1 class='legal-bold-title uppercase tracking-tighter'>Technical Hub</h1><div class='grid md:grid-cols-2 gap-16 text-left'><div class='bg-slate-950 p-12 md:p-24 text-white' style='border-radius: var(--radius)'><p class='text-4xl font-black mb-8 text-white'>{biz_phone}</p><p class='text-2xl mb-12 opacity-80'>{biz_addr}</p><a href='tel:{biz_phone}' class='btn-accent w-full no-underline uppercase tracking-widest font-black'>Book Consultation</a></div><div class='rounded-[3rem] overflow-hidden border shadow-2xl bg-slate-100' style='min-height:300px'>{map_iframe}</div></div></section>"))
         z_f.writestr("privacy.html", get_layout("Privacy", "Legal", f"<div class='max-w-4xl mx-auto py-32 px-10'><h1 class='legal-bold-title uppercase'>Privacy Policy</h1><div class='text-lg legal-text'>{priv_body}</div></div>"))
         z_f.writestr("terms.html", get_layout("Terms", "Legal", f"<div class='max-w-4xl mx-auto py-32 px-10'><h1 class='legal-bold-title uppercase'>Terms & Conditions</h1><div class='text-lg legal-text'>{terms_body}</div></div>"))
         z_f.writestr("404.html", get_layout("404", "Not Found", "<div class='py-64 text-center'><h1 class='text-[120px] font-black uppercase text-slate-200 tracking-widest'>404</h1></div>"))
         z_f.writestr("robots.txt", f"User-agent: *\nAllow: /\nSitemap: {prod_url}sitemap.xml")
         z_f.writestr("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{prod_url}index.html</loc></url><url><loc>{prod_url}about.html</loc></url></urlset>')
 
-    st.success("💎 TITAN SUPREME v11.4 FINAL PLATINUM DEPLOYED. UI, E-commerce, and Scope issues fixed.")
-    st.download_button("📥 DOWNLOAD COMPLETE BIZ PACKAGE", z_b.getvalue(), f"{biz_name.lower().replace(' ', '_')}_v11_4.zip")
+    st.success("💎 TITAN SUPREME v11.5 DEPLOYED. Rectified Button UI & Product Logic.")
+    st.download_button("📥 DOWNLOAD PLATINUM PACKAGE", z_b.getvalue(), f"{biz_name.lower().replace(' ', '_')}_v11_5.zip")
