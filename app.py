@@ -147,33 +147,41 @@ if st.button("🚀 DEPLOY 100% STABLE PLATINUM ASSET"):
         if is_h and sheet_url:
             dynamic_script = f"""
             <script>
-            let currentProducts = [];
+             let currentProducts = [];
             async function fetchLiveData() {{
                 try {{
                     const response = await fetch('{sheet_url}');
                     const csvText = await response.text();
                     if (csvText.includes("<!DOCTYPE")) return;
                     
+                    // This splits the sheet into rows
                     const rows = csvText.split('\\n').slice(1);
                     const container = document.getElementById('live-data-container');
                     container.innerHTML = "";
                     
                     rows.forEach((line, idx) => {{
-                        const parts = line.match(/(".*?"|[^",\\s]+)(?=\\s*,|\\s*$)/g);
-                        if (parts && parts.length >= 2) {{
-                            const clean = parts.map(p => p.replace(/^"|"$/g, "").trim());
+                        if (!line.trim()) return;
+
+                        // BEGINNER FIX: This line correctly splits by comma but keeps spaces inside the name
+                        const parts = line.split(/,(?=(?:(?:[^"]*"){{2}})*[^"]*$)/);
+                        
+                        if (parts.length >= 2) {{
                             const p = {{ 
-                                id: idx, name: clean[0], price: clean[1], desc: clean[2] || "", 
-                                img1: clean[3] || "{img_f}", img2: clean[4] || "", img3: clean[5] || "" 
+                                id: idx, 
+                                name: parts[0].replace(/"/g, "").trim(), 
+                                price: parts[1].replace(/"/g, "").trim(), 
+                                desc: (parts[2] || "").replace(/"/g, "").trim(), 
+                                img1: (parts[3] || "{img_f}").trim() 
                             }};
                             currentProducts.push(p);
+
                             container.innerHTML += `
                             <div onclick="openProduct(${{idx}})" class="product-card flex flex-col justify-between transition-all hover:scale-[1.03]">
                                 <img src="${{p.img1}}" class="w-full h-56 object-cover mb-6 rounded-[2.5rem] bg-slate-50" onerror="this.src='{img_f}'">
                                 <div>
-                                    <h3 class="text-2xl font-black mb-2 uppercase" style="color:var(--p)">${{p.name}}</h3>
-                                    <p class="font-black text-2xl mb-4 text-s" style="color:var(--s)">${{p.price}}</p>
-                                    <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest italic underline decoration-slate-100 underline-offset-4">Click to Open →</p>
+                                    <h3 class="text-2xl font-black mb-2 uppercase" style="color:{p_color}">${{p.name}}</h3>
+                                    <p class="font-black text-2xl mb-4 text-s" style="color:{s_color}">${{p.price}}</p>
+                                    <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest italic underline decoration-slate-100 underline-offset-4">Learn More →</p>
                                 </div>
                             </div>`;
                         }}
