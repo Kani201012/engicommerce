@@ -107,12 +107,32 @@ if st.button("🚀 DEPLOY 100% STABLE PLATINUM ASSET"):
     theme_css = f"""
     :root {{ --p: {p_color}; --s: {s_color}; --radius: {border_rad}; }}
     * {{ box-sizing: border-box; }}
-    html, body {{ margin: 0; padding: 0; width: 100%; overflow-x: hidden; position: relative; scroll-behavior: smooth; }}
-    body {{ font-family: '{b_font}', sans-serif; color: #0f172a; line-height: 1.7; background: #fff; }}
-    h1, h2, h3 {{ font-family: '{h_font}', sans-serif; font-weight: {h_weight}; letter-spacing: {ls}; text-transform: uppercase; line-height: 1.1; }}
+    html, body {{ margin: 0; padding: 0; width: 100%; overflow-x: hidden; position: relative; }}
+    body {{ font-family: '{b_font}', sans-serif; color: #0f172a; line-height: 1.6; background: #fff; }}
+
+    /* RECTIFIED TYPOGRAPHY: FORCES WORDS TO WRAP ON MOBILE */
+    h1, h2, h3 {{ 
+        font-family: '{h_font}', sans-serif; 
+        font-weight: {h_weight}; 
+        letter-spacing: {ls}; 
+        text-transform: uppercase; 
+        line-height: 1.1; 
+        overflow-wrap: break-word; /* Forces long words to wrap */
+        word-break: break-word;     /* Ensures word doesn't go off-screen */
+        hyphens: auto;             /* Adds hyphens if needed */
+    }}
     
-    .hero-title {{ font-size: clamp(1.6rem, 8vw, 95px); text-shadow: 0 4px 20px rgba(0,0,0,0.4); line-height: 1; }}
-    .section-title {{ font-size: clamp(1.8rem, 6vw, 75px); color: var(--p); }}
+    /* SMALLER SCALE FOR MOBILE TITLES */
+    .hero-title {{ font-size: clamp(1.4rem, 8vw, 90px); text-shadow: 0 4px 15px rgba(0,0,0,0.3); }}
+    .section-title {{ font-size: clamp(1.5rem, 6vw, 70px); color: var(--p); }}
+
+    /* PRODUCT MODAL TITLE FIX */
+    #m-title {{ 
+        font-size: clamp(1.2rem, 6vw, 2.5rem); 
+        margin-bottom: 1rem;
+        display: block;
+        width: 100%;
+    }}
     
     /* RECTIFIED PROFESSIONAL BUTTONS */
     .btn-p {{ background: var(--p); color: white !important; padding: 0.9rem 2.2rem; border-radius: var(--radius); font-weight: 900; transition: all 0.4s; display: inline-block; text-align: center; border:none; text-decoration:none; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; cursor: pointer; }}
