@@ -247,23 +247,18 @@ if st.button("🚀 DEPLOY 100% STABLE PLATINUM ASSET"):
     </nav>
     <main class="flex-grow pt-24 md:pt-0">{body_html}</main>
     
-    <div id="modal" onclick="if(event.target == this) {{ this.style.display='none'; document.body.style.overflow='auto'; }}">
+    <div id="modal" onclick="if(event.target == this) closeModal()">
         <div class="modal-content shadow-2xl animate-in zoom-in duration-300">
             <div class="grid md:grid-cols-2">
-                <!-- Image Section: Reduced padding from p-6 to p-4 -->
-                <div class="p-4 bg-slate-50">
-                    <img id="m-img-1" class="w-full h-64 md:h-80 object-cover rounded-[1.5rem] shadow-xl">
+                <div class="p-6 bg-slate-50 flex flex-col gap-6">
+                    <img id="m-main-img" class="w-full h-96 object-cover rounded-[2.5rem] shadow-xl border-4 border-white">
                 </div>
-                
-                <!-- Text Section: Reduced padding from p-12 to p-6 -->
-                <div class="p-6 md:p-12 flex flex-col justify-center text-left">
-                    <h2 id="m-title" class="text-2xl md:text-4xl font-black mb-2 uppercase text-p" style="color:var(--p)"></h2>
-                    <p id="m-price" class="text-xl md:text-3xl font-black mb-4 text-s" style="color:var(--s)"></p>
-                    <p id="m-desc" class="text-slate-600 mb-6 leading-relaxed text-xs md:text-sm"></p>
-                    
-                    <a id="m-wa" href="#" target="_blank" class="btn-supreme w-full uppercase tracking-widest shadow-2xl">Confirm Now</a>
-                    
-                    <button onclick="document.getElementById('modal').style.display='none'; document.body.style.overflow='auto';" class="text-[10px] font-black uppercase tracking-widest opacity-30 mt-6 underline">Close Window</button>
+                <div class="p-12 flex flex-col justify-center text-left">
+                    <h2 id="m-title" class="text-4xl font-black mb-4 uppercase text-p" style="color:var(--p)"></h2>
+                    <p id="m-price" class="text-3xl font-black mb-8 text-s" style="color:var(--s)"></p>
+                    <p id="m-desc" class="text-slate-600 mb-10 leading-relaxed text-lg legal-text"></p>
+                    <a id="m-wa" href="#" target="_blank" class="btn-accent w-full uppercase tracking-widest shadow-2xl">Confirm My Selection</a>
+                    <button onclick="closeModal()" class="text-xs font-black uppercase mt-8 underline no-underline opacity-30">Close</button>
                 </div>
             </div>
         </div>
